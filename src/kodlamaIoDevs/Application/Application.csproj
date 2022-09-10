@@ -20,4 +20,14 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Accounts\Constants\" />
+    <Folder Include="Features\Auth\Constants\" />
+    <Folder Include="Features\Auth\Dtos\" />
+    <Folder Include="Features\Auth\Models\" />
+    <Folder Include="Features\Auth\Queries\" />
+    <Folder Include="Features\Languages\Constants\" />
+    <Folder Include="Features\Technology\Constants\" />
+  </ItemGroup>
+
 </Project>

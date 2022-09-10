@@ -19,6 +19,11 @@ namespace Persistance
             services.AddDbContext<BaseDbContexts>(options => options.UseSqlServer(
                 congfiguration.GetConnectionString("KodlamaIoDevsConnectionString")));
             services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<ITechnologyRepository, TechnologyRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
+            services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
             
             return services;
         }

@@ -5,20 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Domain.Entities
 {
-    public class Language :Entity
+    public class Technology:Entity
     {
         public string Name { get; set; }
-        public virtual ICollection<Account> Accounts  { get; set; }
+        public int LanguageId { get; set; }
+        public virtual Language? Language { get; set; }
 
-        public Language(int id, string name): this()
+        public Technology()
+        {
+
+        }
+
+        public Technology(int id, string name, int languageId):this()
         {
             Id = id;
             Name = name;
+            LanguageId = languageId;
         }
-
-        public Language(){}
     }
 }
