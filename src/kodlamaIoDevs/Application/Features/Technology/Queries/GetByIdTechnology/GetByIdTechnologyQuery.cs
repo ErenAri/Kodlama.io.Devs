@@ -1,6 +1,6 @@
 ﻿using Application.Features.Technology.Dtos;
 using Application.Features.Technology.Rules;
-using Application.Services.Repositories;
+using Application.Services.AuthService;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

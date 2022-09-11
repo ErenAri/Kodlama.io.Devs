@@ -1,6 +1,6 @@
 ﻿using Application.Features.Languages.Dtos;
 using Application.Features.Languages.Rules;
-using Application.Services.Repositories;
+using Application.Services.AuthService;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;

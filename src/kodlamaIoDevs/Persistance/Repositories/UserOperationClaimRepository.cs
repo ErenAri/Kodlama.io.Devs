@@ -1,4 +1,4 @@
-﻿using Application.Services.Repositories;
+﻿using Application.Services.AuthService;
 using Core.Persistence.Repositories;
 using Core.Security.Entities;
 using Persistance.Contexts;

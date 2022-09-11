@@ -1,5 +1,5 @@
 ﻿using Application.Features.Accounts.Models;
-using Application.Services.Repositories;
+using Application.Services.AuthService;
 using AutoMapper;
 using Core.Application.Requests;
 using Core.Persistence.Paging;

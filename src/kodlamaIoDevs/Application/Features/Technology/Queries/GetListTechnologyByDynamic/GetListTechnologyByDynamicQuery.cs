@@ -2,7 +2,7 @@
 using Application.Features.Technology.Models;
 using Application.Features.Technology.Queries.GetByIdTechnology;
 using Application.Features.Technology.Rules;
-using Application.Services.Repositories;
+using Application.Services.AuthService;
 using AutoMapper;
 using Core.Application.Requests;
 using Core.Persistence.Dynamic;

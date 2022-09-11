@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Persistance.Repositories
 {
-    public class OperationClaimRepository :EfRepositoryBase<OperationClaim, BaseDbContexts >, IOperationClaimRepository
+    public class RefreshTokenRepository: EfRepositoryBase<RefreshToken, BaseDbContexts>, IRefreshTokenRepository
     {
-        public OperationClaimRepository(BaseDbContexts contexs) :base(contexs)
+        public RefreshTokenRepository(BaseDbContexts context): base(context)
         {
 
         }

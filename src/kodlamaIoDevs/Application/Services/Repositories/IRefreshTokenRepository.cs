@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services.AuthService
 {
-    public interface IUserRepository  : IAsyncRepository<User>, IRepository<User>
+    public interface IRefreshTokenRepository : IAsyncRepository<RefreshToken>, IRepository<RefreshToken>
     {
     }
 }

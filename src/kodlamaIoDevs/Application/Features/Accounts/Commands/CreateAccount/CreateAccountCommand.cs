@@ -1,6 +1,6 @@
 ﻿using Application.Features.Accounts.Dtos;
 using Application.Features.Accounts.Rules;
-using Application.Services.Repositories;
+using Application.Services.AuthService;
 using AutoMapper;
 using MediatR;
 using System;

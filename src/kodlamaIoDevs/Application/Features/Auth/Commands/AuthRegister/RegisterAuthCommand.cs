@@ -1,5 +1,6 @@
 ﻿using Application.Features.Auth.Commands.AuthLogin;
-using Application.Services.Repositories;
+using Application.Features.Auth.Dtos;
+using Application.Services.AuthService;
 using AutoMapper;
 using Core.Persistence.Paging;
 using Core.Security.Entities;
@@ -29,6 +30,7 @@ namespace Application.Features.Auth.Commands.AuthRegister
             private readonly IMapper _mapper;
             private readonly ITokenHelper _tokenHelper;
             private readonly AuthBusinessRules _authBusinessRules;
+            private readonly IAuthService _authService;
 
 
 
@@ -36,12 +38,15 @@ namespace Application.Features.Auth.Commands.AuthRegister
             {
                 await _authBusinessRules.AuthRegisterNameCanNotBeDuplicatedWhenInserted(request.Email);
 
-                Byte[] passwordHash, passwordSalt;
+                byte[] passwordHash, passwordSalt;
                 HashingHelper.CreatePasswordHash(request.Password, out passwordHash, out passwordSalt);
 
                 User user = _mapper.Map<User>(request);
+                user.Email = request.Email;
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
+                user.FirstName = request.FirstName;
+                user.LastName = request.LastName;
                 user.Status = true;
 
                 User userRegister = await _userRepository.AddAsync(user);
@@ -52,8 +57,20 @@ namespace Application.Features.Auth.Commands.AuthRegister
                 IPaginate<UserOperationClaim> userGetClaims = await _userOperationClaimRepository.GetListAsync(u => u.UserId == userRegister.Id, include: i => i.Include(i => i.OperationClaim));
 
                 AccessToken accessToken = _tokenHelper.CreateToken(user, userGetClaims.Items.Select(u => u.OperationClaim).ToList());
+                RefreshToken createdRefreshToken = await _authService.CreateRefreshToken(user, request.Email);
+                RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
+
+                RegisteredDto registeredDto = new()
+                {
+                    RefreshToken = addedRefreshToken,
+                    AccessToken = accessToken,
+                };
+
                 return accessToken;
+                
             }
+
+           
         }
     }
 }

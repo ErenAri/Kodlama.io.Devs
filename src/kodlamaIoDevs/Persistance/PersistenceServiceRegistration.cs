@@ -1,4 +1,4 @@
-﻿using Application.Services.Repositories;
+﻿using Application.Services.AuthService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +24,7 @@ namespace Persistance
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
             services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             
             return services;
         }

@@ -3,6 +3,7 @@ using Application.Features.Accounts.Rules;
 using Application.Features.Auth.Commands.AuthLogin;
 using Application.Features.Languages.Rules;
 using Application.Features.Technology.Rules;
+using Application.Services.AuthService;
 using Core.Application.Pipelines.Validation;
 using FluentAssertions.Common;
 using FluentValidation;
@@ -28,6 +29,7 @@ namespace Application
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            services.AddScoped<IAuthService, AuthManager>();
 
             services.AddScoped<LanguageBusinessRules>();
             services.AddScoped<TechnologyBusinessRules>();
